@@ -1,8 +1,8 @@
-name: NodeRED Hackathon-Handwerk Stack
+name: NodeRED-Hackathon-Handwerk-Stack
 description: |
   # Description of the Catalog Entry
 version: 0.0.1
-category: Stack
+category: Databases
 maintainer: Patrick Nitschke
 license: The MIT License
 projectURL: https://github.com/patrick-nits/rancher-custom-catalog.git
