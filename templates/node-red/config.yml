@@ -1,0 +1,8 @@
+name: NodeRED Hackathon-Handwerk Stack
+description: |
+  # Description of the Catalog Entry
+version: 0.0.1
+category: Custom Stacks
+maintainer: Patrick Nitschke
+license: The MIT License
+projectURL: # A URL related to the catalog entry
