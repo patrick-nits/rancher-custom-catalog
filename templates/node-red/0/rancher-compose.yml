@@ -16,7 +16,7 @@ catalog:
     - variable: username
       label: "Benutzername"
       description: "Benutzername for MariaDB, MongoDB, Adminer, AdminMongo"
-      default: "changeMechangeMe"
+      default: "root"
       type: string 
     - variable: password
       label: "Passwords"
@@ -27,6 +27,11 @@ catalog:
       label: "Database"
       description: "Database name for MariaDB, MongoDB"
       default: "hackathon-handwerk"
+      type: string 
+    - variable: team
+      label: "Team"
+      description: "Hackathon Handwerk Team"
+      default: "changeMe"
       type: string 
 services:
   node-red-stack-lb:
