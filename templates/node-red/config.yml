@@ -1,6 +1,5 @@
 name: NodeRED-Hackathon-Handwerk-Stack
-description: |
-  # Description of the Catalog Entry
+description: NodeRED Stack für den Hackathon Handwerk
 version: 0.0.1
 category: Databases
 maintainer: Patrick Nitschke

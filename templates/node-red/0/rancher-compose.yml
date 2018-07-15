@@ -1,4 +1,5 @@
-.catalog:
+version: "2"
+catalog:
   name: NodeRED Hackathon-Handwerk Stack
   version: 0.0.1
   maintainer: "Patrick Nitschke"
@@ -12,3 +13,45 @@
       options:
         - local
         - rancher-nfs
+  - variable: username
+    label: "Benutzername"
+    description: "Benutzername for MariaDB, MongoDB, Adminer, AdminMongo"
+    default: "changeMechangeMe"
+    type: string 
+  - variable: password
+    label: "Passwords"
+    description: "Password for MariaDB, MongoDB, Adminer, AdminMongo"
+    default: "changeMechangeMe"
+    type: string 
+  - variable: db
+    label: "Database"
+    description: "Database name for MariaDB, MongoDB"
+    default: "hackathon-handwerk"
+    type: string 
+services:
+  node-red-stack-lb:
+    scale: 1
+    lb_config:
+      certs: []
+      port_rules:
+      - protocol: http
+        hostname: ${team}.rancher.hackathon-handwerk.de
+        service: node-red
+        source_port: 80
+        target_port: 1880
+      - protocol: http
+        hostname: mariadb.${team}.rancher.hackathon-handwerk.de
+        service: maria-db-management
+        source_port: 80
+        target_port: 8080
+      - protocol: http
+        hostname: mongodb.${team}.rancher.hackathon-handwerk.de
+        service: mongodb-db-management
+        source_port: 80
+        target_port: 1234
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      interval: 2000
+      port: 42
+      unhealthy_threshold: 3
