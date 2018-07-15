@@ -50,6 +50,7 @@ services:
     scale: 1
     retain_ip: true
   node-red-stack-lb:
+    depends_on: node-red
     scale: 1
     lb_config:
       certs: []
