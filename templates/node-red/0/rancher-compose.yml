@@ -33,22 +33,7 @@ catalog:
       description: "Hackathon Handwerk Team"
       default: "changeMe"
       type: string 
-services:
-  node-red:
-    scale: 1
-    retain_ip: true
-  maria-db:
-    scale: 1
-    retain_ip: true
-  maria-db-management:
-    scale: 1
-    retain_ip: true
-  mongo-db:
-    scale: 1
-    retain_ip: true
-  mongo-db-management:
-    scale: 1
-    retain_ip: true
+services:  
   node-red-stack-lb:
     scale: 1
     lb_config:
@@ -69,3 +54,18 @@ services:
         service: mongo-db-management
         source_port: 80
         target_port: 1234
+  node-red:
+    scale: 1
+    retain_ip: true
+  maria-db:
+    scale: 1
+    retain_ip: true
+  maria-db-management:
+    scale: 1
+    retain_ip: true
+  mongo-db:
+    scale: 1
+    retain_ip: true
+  mongo-db-management:
+    scale: 1
+    retain_ip: true
