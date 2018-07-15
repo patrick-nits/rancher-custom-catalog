@@ -33,39 +33,57 @@ catalog:
       description: "Hackathon Handwerk Team"
       default: "changeMe"
       type: string 
-services:  
+services:
+  mongo-db:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+  node-red:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+  mongo-db-management:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+  maria-db:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+  maria-db-management:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
   node-red-stack-lb:
     scale: 1
+    start_on_create: true
     lb_config:
       certs: []
       port_rules:
-      - protocol: http
-        hostname: ${team}.rancher.hackathon-handwerk.de
+      - hostname: team0.rancher.hackathon-handwerk.de
+        path: ''
+        priority: 1
+        protocol: http
         service: node-red
         source_port: 80
         target_port: 1880
-      - protocol: http
-        hostname: mariadb.${team}.rancher.hackathon-handwerk.de
+      - hostname: mariadb.team0.rancher.hackathon-handwerk.de
+        priority: 2
+        protocol: http
         service: maria-db-management
         source_port: 80
         target_port: 8080
-      - protocol: http
-        hostname: mongodb.${team}.rancher.hackathon-handwerk.de
+      - hostname: mongodb.team0.rancher.hackathon-handwerk.de
+        priority: 3
+        protocol: http
         service: mongo-db-management
         source_port: 80
         target_port: 1234
-  node-red:
-    scale: 1
-    retain_ip: true
-  maria-db:
-    scale: 1
-    retain_ip: true
-  maria-db-management:
-    scale: 1
-    retain_ip: true
-  mongo-db:
-    scale: 1
-    retain_ip: true
-  mongo-db-management:
-    scale: 1
-    retain_ip: true
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
