@@ -13,21 +13,21 @@ catalog:
       options:
         - local
         - rancher-nfs
-  - variable: username
-    label: "Benutzername"
-    description: "Benutzername for MariaDB, MongoDB, Adminer, AdminMongo"
-    default: "changeMechangeMe"
-    type: string 
-  - variable: password
-    label: "Passwords"
-    description: "Password for MariaDB, MongoDB, Adminer, AdminMongo"
-    default: "changeMechangeMe"
-    type: string 
-  - variable: db
-    label: "Database"
-    description: "Database name for MariaDB, MongoDB"
-    default: "hackathon-handwerk"
-    type: string 
+    - variable: username
+      label: "Benutzername"
+      description: "Benutzername for MariaDB, MongoDB, Adminer, AdminMongo"
+      default: "changeMechangeMe"
+      type: string 
+    - variable: password
+      label: "Passwords"
+      description: "Password for MariaDB, MongoDB, Adminer, AdminMongo"
+      default: "changeMechangeMe"
+      type: string 
+    - variable: db
+      label: "Database"
+      description: "Database name for MariaDB, MongoDB"
+      default: "hackathon-handwerk"
+      type: string 
 services:
   node-red-stack-lb:
     scale: 1
