@@ -1,6 +1,7 @@
 version: "2"
 catalog:
   name: NodeRED-Hackathon-Handwerk-Stack
+  description: "NodeRED Hackathon Handwerk Stack"
   version: 0.0.1
   maintainer: "Patrick Nitschke"
   questions:
