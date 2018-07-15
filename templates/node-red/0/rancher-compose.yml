@@ -1,0 +1,14 @@
+.catalog:
+  name: NodeRED Hackathon-Handwerk Stack
+  version: 0.0.1
+  maintainer: "Patrick Nitschke"
+  questions:
+    - variable: "volumedriver"
+      description: "Choose the Volume Driver being used.(Option: local or rancher-nfs)"
+      label: "Volume Driver:"
+      required: true
+      default: rancher-nfs
+      type: "enum"
+      options:
+        - local
+        - rancher-nfs

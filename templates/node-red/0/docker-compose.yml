@@ -1,0 +1,65 @@
+version: "2"
+volumes:
+  node-red-data:
+    driver: local
+  maria-db-data:
+    driver: local
+  mongo-db-data:
+    driver: local
+services:
+  node-red:
+    container_name: node-red
+    image: pnit/hh-node-red:latest
+    restart: always
+    volumes:
+      - node-red-data:/data
+    links:
+      - maria-db
+      - mongo-db
+    ports:
+      - 1880:1880
+  maria-db:
+    container_name: maria-db
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: hackathon-handwerk
+    volumes:
+      - maria-db-data:/var/lib/mysql
+  maria-db-management:
+    container_name: maria-db-management
+    image: adminer
+    restart: always
+    links:
+      - maria-db:db
+      - mongo-db:mongo
+    ports:
+      - 8080:8080
+  mongo-db:
+    container_name: mongo-db
+    image: bitnami/mongodb:latest
+    restart: always
+    environment:
+      MONGODB_ROOT_PASSWORD: test
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: test
+      MONGODB_DATABASE: hackathon-handwerk
+    volumes:
+      - mongo-db-data:/data/db
+  mongo-db-management:
+    container_name: mongo-db-management
+    image: pnit/adminmongo
+    restart: always
+    environment:
+      - DB_USERNAME=root
+      - DB_PASSWORD=test
+      - DB_HOST=mongo
+      - DB_NAME=hackathon-handwerk
+      - DB_PORT=27017
+      - CONN_NAME=mongo-db
+      - PORT=8081
+    ports:
+      - 8081:8081
+    links:
+      - mongo-db:mongo
