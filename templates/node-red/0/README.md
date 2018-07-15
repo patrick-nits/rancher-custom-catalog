@@ -12,17 +12,17 @@ Folgende Dienste sind nach erfolgreichem Start dieser Applikationen verfügbar:
 # Verwendung der Datenbanken in NodeRED
 * MariaDB / MySQL ist unter dem Namen **mariadb** erreichbar.
 * Mongodb ist unter dem Namen **mongodb** erreichbar.
-..* "Collections" sind Listen von Dokumenten in MongoDB und können beliebig erstellt werden.
+  * "Collections" sind Listen von Dokumenten in MongoDB und können beliebig erstellt werden.
 * Benutzernamen, Passwörter und Datenbanken beziehen sich auf die Eingaben in den entsprechenden Feldern.
 
 # Verwendung von Adminer
 1. Folgende Url aufrufen ** mariadb.[team].rancher.hackathon-handwerk.de**
 2. Im Anmeldefenster folgende Einträge machen
-..* Datenbank System: **MySQL**
-..* Server: **db** oder **mariadb**
-..* Benutzer: siehe eingabe unter **Benutzer**
-..* Passwort: siehe eingabe unter **Passwort**
-..* Datenbank: siehe eingabe unter **Datenbank** (Standard: **hackathon-handwerk**)
+  * Datenbank System: **MySQL**
+  * Server: **db** oder **mariadb**
+  * Benutzer: siehe eingabe unter **Benutzer**
+  * Passwort: siehe eingabe unter **Passwort**
+  * Datenbank: siehe eingabe unter **Datenbank** (Standard: **hackathon-handwerk**)
 3. Auf **login** klicken.
 
 # Verwendung von AdminMongo
@@ -30,8 +30,8 @@ Folgende Dienste sind nach erfolgreichem Start dieser Applikationen verfügbar:
 2. Es erscheint eine Eingabemaske mit **Connection name**, **Connection string** und **Action**
 3. Bei **Connection name** ein beliebigen Namen eingaben.
 4. Bei **Connection string** folgende Eingabe machen, eckige Klammern müssen entfernt werden.
-..* mongodb://[Benutzer]:[Passwort]@mongodb:27017/[Datenbank]
-..* Benutzer: siehe eingabe unter **Benutzer**
-..* Passwort: siehe eingabe unter **Passwort**
-..* Datenbank: siehe eingabe unter **Datenbank** (Standard: **hackathon-handwerk**)
+  * mongodb://[Benutzer]:[Passwort]@mongodb:27017/[Datenbank]
+  * Benutzer: siehe eingabe unter **Benutzer**
+  * Passwort: siehe eingabe unter **Passwort**
+  * Datenbank: siehe eingabe unter **Datenbank** (Standard: **hackathon-handwerk**)
 5. Auf **Add connection** klicken.
