@@ -23,11 +23,11 @@ volumes:
 services:
     alfresco:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: host=${host}"
         image: alfresco/alfresco-content-repository-community:6.2.1-A2
         mem_limit: 1g
         environment:
-            JAVA_OPTS: >
+            JAVA_OPTS: "
                 -Ddb.driver=org.postgresql.Driver
                 -Ddb.username=${db_user}
                 -Ddb.password=${db_password}
@@ -41,7 +41,7 @@ services:
                 -Dshare.port=8080
                 -Dalfresco.host=localhost
                 -Dalfresco.port=8080
-                -Daos.baseUrlOverwrite=http://$(url):8080/alfresco/aos
+                -Daos.baseUrlOverwrite=http://$$(url):8080/alfresco/aos
                 -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"
                 -Ddeployment.method=DOCKER_COMPOSE
 
@@ -55,14 +55,14 @@ services:
 
                 -Dcsrf.filter.enabled=false
                 -Xms256m -Xmx1000m
-                
+                "
         volumes:
             - alfresco_data:/usr/local/tomcat/alf_data
             - alfresco_logs:/usr/local/tomcat/logs 
 
     transform-core-aio:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/alfresco-transform-core-aio:2.2.0-A4
         mem_limit: 256m
         environment:
@@ -72,7 +72,7 @@ services:
 
     share:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/alfresco-share:6.2.0
         mem_limit: 1g
         environment:
@@ -91,7 +91,7 @@ services:
 
     postgres:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: postgres:11.4
         mem_limit: 512m
         environment:
@@ -107,7 +107,7 @@ services:
 
     solr6:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/alfresco-search-services:1.4.0
         mem_limit: 1g
         environment:
@@ -129,7 +129,7 @@ services:
 
     activemq:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/alfresco-activemq:5.15.8
         mem_limit: 256m
         #ports:
@@ -140,7 +140,7 @@ services:
             
     proxy:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/acs-community-ngnix:1.0.0
         mem_limit: 128m
         depends_on:
@@ -156,6 +156,6 @@ services:
         ports:
             - 8080:8080/tcp
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
             io.rancher.container.agent.role: environmentAdmin
             io.rancher.container.create_agent: 'true'
