@@ -1,0 +1,70 @@
+version: '2'
+catalog:
+  name: Alfresco-CE-EIM
+  description: "Alfresco-CE-EIM"
+  version: 0.0.1
+  maintainer: "Patrick Nitschke"
+  questions:
+    - variable: "volumedriver"
+      description: "Choose the Volume Driver being used.(Option: local)"
+      label: "Volume Driver:"
+      required: true
+      default: local
+      type: "enum"
+      options:
+        - local
+    - variable: host
+      label: "host:"
+      description: "Reuqired Label for host"
+      default: "root"
+      type: string 
+    - variable: url
+      label: "URL:"
+      description: "URL for the Stack"
+      default: "ALFX.CLOUD.fgeim.de"
+      type: string 
+    - variable: db_user
+      label: "Database User:"
+      description: "User for Database"
+      default: "alfresco"
+      type: string 
+    - variable: db_pw
+      label: "Database Password:"
+      description: "Password for Database"
+      default: "alfresco"
+      type: string 
+services:
+  activemq:
+    scale: 1
+    start_on_create: true
+  proxy:
+    scale: 1
+    start_on_create: true
+  alfresco:
+    scale: 1
+    start_on_create: true
+  transform-core-aio:
+    scale: 1
+    start_on_create: true
+  share:
+    scale: 1
+    start_on_create: true
+  solr6:
+    scale: 1
+    start_on_create: true
+  postgres:
+    scale: 1
+    start_on_create: true
+  lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - hostname: alf1.horizon1.fgeim.de
+        path: ''
+        priority: 1
+        protocol: http
+        service: proxy
+        source_port: 8080
+        target_port: 8080
