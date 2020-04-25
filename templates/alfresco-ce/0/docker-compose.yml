@@ -23,7 +23,7 @@ volumes:
 services:
     alfresco:
         labels:
-            io.rancher.scheduler.affinity:host_label: host=${host}"
+            io.rancher.scheduler.affinity:host_label: "host=${host}"
         image: alfresco/alfresco-content-repository-community:6.2.1-A2
         mem_limit: 1g
         environment:
