@@ -61,7 +61,7 @@ services:
     lb_config:
       certs: []
       port_rules:
-      - hostname: alf1.horizon1.fgeim.de
+      - hostname: ${url}
         path: ''
         priority: 1
         protocol: http
