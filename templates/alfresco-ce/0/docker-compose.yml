@@ -30,7 +30,7 @@ services:
             JAVA_OPTS: "
                 -Ddb.driver=org.postgresql.Driver
                 -Ddb.username=${db_user}
-                -Ddb.password=${db_password}
+                -Ddb.password=${db_pw}
                 -Ddb.url=jdbc:postgresql://postgres:5432/alfresco
                 -Dsolr.host=solr6
                 -Dsolr.port=8983
