@@ -95,7 +95,7 @@ services:
         mem_limit: 512m
         environment:
             - POSTGRES_PASSWORD=${db_user}
-            - POSTGRES_USER=${db_password}
+            - POSTGRES_USER=${db_pw}
             - POSTGRES_DB=alfresco
         command: postgres -c max_connections=300 -c log_min_messages=LOG
         #ports:
