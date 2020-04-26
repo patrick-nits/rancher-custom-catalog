@@ -24,7 +24,8 @@ services:
     alfresco:
         labels:
             io.rancher.scheduler.affinity:host_label: "host=${host}"
-        image: alfresco/alfresco-content-repository-community:6.2.1-A2
+        #image: alfresco/alfresco-content-repository-community:6.2.1-A2
+        image: alfresco/alfresco-governance-repository-community:3.0.a
         mem_limit: 1g
         environment:
             JAVA_OPTS: "
@@ -72,7 +73,8 @@ services:
     share:
         labels:
             io.rancher.scheduler.affinity:host_label: "host=${host}"
-        image: alfresco/alfresco-share:6.2.0
+        #image: alfresco/alfresco-share:6.2.0
+        image: alfresco/alfresco-governance-share-community
         mem_limit: 1g
         environment:
             REPO_HOST: "alfresco"
