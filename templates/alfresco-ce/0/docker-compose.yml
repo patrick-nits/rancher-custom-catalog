@@ -27,7 +27,34 @@ services:
         image: alfresco/alfresco-content-repository-community:6.2.1-A2
         mem_limit: 1g
         environment:
-            JAVA_OPTS: "-Ddb.driver=org.postgresql.Driver -Ddb.username=${db_user} -Ddb.password=${db_password} -Ddb.url=jdbc:postgresql://postgres:5432/alfresco -Dsolr.host=solr6 -Dsolr.port=8983 -Dsolr.base.url=/solr -Dindex.subsystem.name=solr6 -Dshare.host=$(url) -Dshare.port=8080 -Dalfresco.host=localhost -Dalfresco.port=8080 -Daos.baseUrlOverwrite=http://$(url):8080/alfresco/aos -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"-Ddeployment.method=DOCKER_COMPOSE -DlocalTransform.core-aio.url=http://transform-core-aio:8090/ -Dalfresco-pdf-renderer.url=http://transform-core-aio:8090/ -Djodconverter.url=http://transform-core-aio:8090/ -Dimg.url=http://transform-core-aio:8090/ -Dtika.url=http://transform-core-aio:8090/ -Dtransform.misc.url=http://transform-core-aio:8090/ -Dcsrf.filter.enabled=false -Xms256m -Xmx1000m "
+            JAVA_OPTS: "
+                -Ddb.driver=org.postgresql.Driver
+                -Ddb.username=${db_user}
+                -Ddb.password=${db_password}
+                -Ddb.url=jdbc:postgresql://postgres:5432/alfresco
+                -Dsolr.host=solr6
+                -Dsolr.port=8983
+                -Dsolr.base.url=/solr
+                -Dindex.subsystem.name=solr6
+                -Dshare.host=${url}
+                -Dshare.port=8080
+                -Dalfresco.host=localhost
+                -Dalfresco.port=8080
+                -Daos.baseUrlOverwrite=http://${url}:8080/alfresco/aos
+                -Dmessaging.broker.url=\"failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true\"
+                -Ddeployment.method=DOCKER_COMPOSE
+
+                -DlocalTransform.core-aio.url=http://transform-core-aio:8090/
+
+                -Dalfresco-pdf-renderer.url=http://transform-core-aio:8090/
+                -Djodconverter.url=http://transform-core-aio:8090/
+                -Dimg.url=http://transform-core-aio:8090/
+                -Dtika.url=http://transform-core-aio:8090/
+                -Dtransform.misc.url=http://transform-core-aio:8090/
+
+                -Dcsrf.filter.enabled=false
+                -Xms256m -Xmx1000m
+                "
         volumes:
             - alfresco_data:/usr/local/tomcat/alf_data
             - alfresco_logs:/usr/local/tomcat/logs 
